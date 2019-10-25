@@ -80,6 +80,17 @@ export default {
         .ref("memos/" + this.user.uid)
         .set(this.memos);
     }
+  },
+  mounted() {
+    document.onkeydown = e => {
+      if (e.key == "s" && (e.metaKey || e.ctrlKey)) {
+        this.saveMemos();
+        return false;
+      }
+    };
+  },
+  beforeDestroy() {
+    document.onkeydown = null;
   }
 };
 </script>
